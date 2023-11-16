@@ -11,14 +11,29 @@ public class SimpleSpellBook : ISpellBook{
     }
 
 
-    public void AddSpell(ISpell spell) {
-        //to do wydrukuj ze nie mozesz dodac wiecej czarow
-        if (Spells.Count >= SpellCount) return;
+    public void AddSpell(ISpell spell)
+    {
+        if (Spells.Count >= SpellCount)
+        {
+            Console.WriteLine($"Cannot add more spells to {Name}. Maximum spell count ({SpellCount}) reached.");
+            return;
+        }
 
         Spells.Add(spell);
+        Console.WriteLine($"{spell.Name} added to {Name} spell book.");
     }
 
     public void RemoveSpell(ISpell spell) {
         Spells.Remove(spell);
+    }
+
+    public int CastSpell(int rnd)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void PrintInfo()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -7,5 +7,7 @@ public interface ISpellBook{
     List<ISpell> Spells { get; }
 
     void AddSpell(ISpell spell);
+    int CastSpell(int rnd);
+    void PrintInfo();
     void RemoveSpell(ISpell spell);
 }
