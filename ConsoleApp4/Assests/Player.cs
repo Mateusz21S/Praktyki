@@ -1,4 +1,6 @@
-﻿using ConsoleApp4.Obiekty.Weapons;
+﻿using ConsoleApp4.Obiekty.Spells;
+using ConsoleApp4.Obiekty.Weapons;
+using System.Runtime.CompilerServices;
 
 namespace ConsoleApp4.Obiekty;
 
@@ -10,7 +12,9 @@ public class Player{
 
     public int Health { get; private set; } = 100;
 
-    public WeaponBase PlayerWeapon { get; private set; } = new FistWeapon();
+    public IWeapon PlayerWeapon { get; private set; } = new WarHammerWeapon();
+
+    public ISpellBook SpellBook { get; private set; }
 
     public Player(string name) {
         Name = name;
@@ -22,7 +26,7 @@ public class Player{
     }
 
 
-    public void AddWeapon(WeaponBase weapon) {
+    public void AddWeapon(IWeapon weapon) {
         PlayerWeapon = weapon;
         Console.WriteLine($"Player {Name} gets {weapon.Name}");
     }
@@ -46,9 +50,25 @@ public class Player{
         return dmg;
     }
 
+    public int MagicAttack() {
+        //todo to też zaimplementuj podobnie jak broń
+    }
+
     public void PrintInfo() {
         Console.WriteLine($"Player {Name} has {Health} health points");
         Console.WriteLine(IsAlive() ? "Player is alive" : "RIP");
         Console.WriteLine("Player has weapon: " + PlayerWeapon.Name);
+    }
+
+
+    public void AddSpellBook() {
+        //todo zaimplementuj to
+       
+    }
+
+
+    public void AddSpell(ISpell spell) {
+        //todo zaimplementuj to
+        //sprawdz czy gracz ma książkę zaklęć jak nie wydrukuj komunikat że nie ma
     }
 }

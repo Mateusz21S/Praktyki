@@ -1,27 +1,18 @@
 ﻿using System;
 using ConsoleApp4.Obiekty;
+using ConsoleApp4.Obiekty.Spells;
 using ConsoleApp4.Obiekty.Weapons;
 
 class Program
 
 {
-    static void Main()
-    {
+    static void Main() {
+        //sprawdź czy działa
+        //dwie nowe bronie 
+        //dwa nowe czary
+        //dwie nowe knigi czarów
 
-
-        var player = new Player("Janusza");
-
-
-
-        for (int i = 0; i < 5; i++)
-        {
-            player.Attack();
-        }
-
-        var sword = new SwordWeapon();
-
-        player.AddWeapon(sword);
-
+        //todo powołaj do życia gracza dodaj mu dowolnego spell booka i broń
 
     }
 
