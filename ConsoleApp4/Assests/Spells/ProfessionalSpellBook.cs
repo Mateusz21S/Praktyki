@@ -30,6 +30,14 @@ public class ProfessionalSpellBook : ISpellBook
         Console.WriteLine($"{spell.Name} added to {Name} spell book.");
     }
 
+    public bool HasSpell(string name) {
+        throw new NotImplementedException();
+    }
+
+    public int CastSpell(string name, int rnd) {
+        throw new NotImplementedException();
+    }
+
     public void RemoveSpell(ISpell spell)
     {
         Spells.Remove(spell);

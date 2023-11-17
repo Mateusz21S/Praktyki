@@ -1,8 +1,7 @@
 ﻿using ConsoleApp4.Obiekty.Spells;
 using ConsoleApp4.Obiekty.Weapons;
-using System.Runtime.CompilerServices;
 
-namespace ConsoleApp4.Obiekty;
+namespace ConsoleApp4.Assests;
 
 public class Player
 {
@@ -16,6 +15,10 @@ public class Player
     public IWeapon PlayerWeapon { get; private set; } = new WarHammerWeapon();
 
     public ISpellBook SpellBook { get; private set; }
+
+    public int MaxMana { get; set; } = 100;  
+
+    public int Mana { get; set; }
 
     public Player(string name)
     {
@@ -56,16 +59,19 @@ public class Player
         return dmg;
     }
 
-    public int MagicAttack()
+    public int MagicAttack(ISpell spell)
     {
-        if (SpellBook == null)
+        if (SpellBook is null)
         {
             Console.WriteLine($"{Name} does not have a spell book to perform a magic attack.");
             return 0;
         }
 
+        // sprawdzić mane czy ma wystarczająco jak nie to komunikat
+        // sprawdzić czy dany czar jest na liście po nazwie
+
         var rnd = new Random().Next(0, 6);
-        var magicDmg = SpellBook.CastSpell(rnd);
+        var magicDmg = SpellBook.CastSpell(spell.Name, rnd);
 
         Console.WriteLine($"Player {Name} performs a magic attack with {magicDmg} damage");
         SpellBook.PrintInfo();
@@ -106,5 +112,11 @@ public class Player
 
         SpellBook.AddSpell(spell);
         Console.WriteLine($"{spell.Name} added to {SpellBook.Name}");
+    }
+
+
+    public void Rest() {
+        // odnawanie many 
+        // i odnawanie małe zdrowia
     }
 }

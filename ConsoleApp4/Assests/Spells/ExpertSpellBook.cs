@@ -1,11 +1,18 @@
-﻿namespace ConsoleApp4.Obiekty.Spells;
+using ConsoleApp4.Obiekty.Spells;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class SimpleSpellBook : ISpellBook{
-    public string Name { get; } = "Simple Spell Book";
-    public int SpellCount { get; private set; } = 2;
+namespace ConsoleApp4.Assests.Spells;
+public class ExpertSpellBook : ISpellBook
+{
+    public string Name { get; } = "Expert Spell Book";
+    public int SpellCount { get; private set; } = 8;
     public List<ISpell> Spells { get; }
 
-    public SimpleSpellBook()
+    public ExpertSpellBook()
     {
         Spells = new List<ISpell>();
     }
@@ -27,14 +34,17 @@ public class SimpleSpellBook : ISpellBook{
         throw new NotImplementedException();
     }
 
-    public void RemoveSpell(ISpell spell) {
+    public int CastSpell(string name, int rnd) {
+        throw new NotImplementedException();
+    }
+
+    public void RemoveSpell(ISpell spell)
+    {
         Spells.Remove(spell);
     }
 
-    public int CastSpell(string name, int rnd)
+    public int CastSpell(int rnd)
     {
-        //stprawdzić czy dany czar jest na liście po nazwie
-
         throw new NotImplementedException();
     }
 

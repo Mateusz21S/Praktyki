@@ -1,3 +1,5 @@
+using ConsoleApp4.Obiekty.Weapons;
+
 namespace ConsoleApp4.Assests.Weapons;
 public class PistolWeapon : IWeapon
 {

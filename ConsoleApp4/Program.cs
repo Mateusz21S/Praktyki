@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleApp4.Assests;
 using ConsoleApp4.Assests.Spells;
 using ConsoleApp4.Obiekty;
 using ConsoleApp4.Obiekty.Spells;
@@ -26,7 +27,7 @@ class Program
 
         player.Attack();
 
-        player.MagicAttack();
+        player.MagicAttack(fireBallSpell);
 
         player.AddDamage(50);
 
