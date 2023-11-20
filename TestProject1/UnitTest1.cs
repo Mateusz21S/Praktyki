@@ -5,30 +5,36 @@ namespace TestProject1
     public class UnitTest1
     {
         [Fact]
-        public void Player_Creation() {
+        public void Player_Creation()
+        {
             var player = new Player("Kaziu");
 
-
-            Assert.Equal(player.Name, "Kaziu");
-            Assert.Equal(player.Health, 100);
+            Assert.Equal("Kaziu", player.Name);
+            Assert.Equal(100, player.Health);
             Assert.True(player.IsAlive());
         }
 
         [Fact]
-        public void Add_Damage_Test() {
-            //arrange
+        public void Player_Takes_Damage_And_Health_Decreases()
+        {
             var player = new Player("Kaziu");
-            //act
-            player.AddDamage(50);   
 
-            //assert
-            Assert.Equal(player.Health, 50);
+            player.AddDamage(50);
 
+            Assert.Equal(50, player.Health);
         }
+
+        [Fact]
+        public void Player_Attack_Deals_Damage()
+        {
+            var player = new Player("Kaziu");
+
+            var damage = player.Attack();
+
+            Assert.True(damage >= 0); 
+           
+        }
+
         
-        //test pozosta³em rzeczy czy ¿yje itp
-
-
-
     }
 }

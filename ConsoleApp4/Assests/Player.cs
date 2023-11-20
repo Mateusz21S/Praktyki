@@ -1,10 +1,14 @@
 ﻿using ConsoleApp4.Obiekty.Spells;
 using ConsoleApp4.Obiekty.Weapons;
+using System;
 
 namespace ConsoleApp4.Assests;
 
 public class Player
 {
+    private object random;
+    private int rnd;
+
     public Guid Id { get; } = Guid.NewGuid();
     public string Name { get; }
 
@@ -61,16 +65,12 @@ public class Player
 
     public int MagicAttack(ISpell spell)
     {
-        if (SpellBook is null)
+        if (SpellBook == null)
         {
             Console.WriteLine($"{Name} does not have a spell book to perform a magic attack.");
             return 0;
         }
 
-        // sprawdzić mane czy ma wystarczająco jak nie to komunikat
-        // sprawdzić czy dany czar jest na liście po nazwie
-
-        var rnd = new Random().Next(0, 6);
         var magicDmg = SpellBook.CastSpell(spell.Name, rnd);
 
         Console.WriteLine($"Player {Name} performs a magic attack with {magicDmg} damage");
@@ -79,30 +79,33 @@ public class Player
         return magicDmg;
     }
 
-    public void PrintInfo()
-    {
-        Console.WriteLine($"Player {Name} has {Health} health points");
-        Console.WriteLine(IsAlive() ? "Player is alive" : "RIP");
-        Console.WriteLine("Player has weapon: " + PlayerWeapon.Name);
-    }
-
-
     public void AddSpellBook(ISpellBook spellBook)
     {
         if (spellBook != null)
         {
             SpellBook = spellBook;
-            Console.WriteLine($"{Name} obtains a spell book: {spellBook.Name}");
-        }
-        else
+            Console.WriteLine($"{Name} obtains a spell book: {spellBook.Name}");      
+    }
+}
+
+    public void Rest()
+    {
+        const int healthRestoration = 10;
+
+        Health += healthRestoration;
+
+        if (Health > 100) 
         {
-            SpellBook = new SimpleSpellBook(); 
-            Console.WriteLine($"{Name} obtains a default spell book.");
+            Health = 100;
         }
+
+        Mana = MaxMana;
+
+        Console.WriteLine($"{Name} rests and restores {healthRestoration} health and full mana.");
+        PrintInfo();
     }
 
-
-    public void AddSpell(ISpell spell)
+    private void AddSpell1(ISpell spell)
     {
         if (SpellBook == null)
         {
@@ -112,11 +115,29 @@ public class Player
 
         SpellBook.AddSpell(spell);
         Console.WriteLine($"{spell.Name} added to {SpellBook.Name}");
+
     }
 
-
-    public void Rest() {
-        // odnawanie many 
-        // i odnawanie małe zdrowia
+    private void PrintInfo1()
+    {
+        Console.WriteLine($"Player {Name} has {Health} health points");
+        Console.WriteLine(IsAlive() ? "Player is alive" : "RIP");
+        Console.WriteLine("Player has weapon: " + PlayerWeapon.Name);
     }
+
+    internal void PrintInfo()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void MagicAttack()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void AddSpell(ISpell lightningSpell)
+    {
+        throw new NotImplementedException();
+    }
+
 }

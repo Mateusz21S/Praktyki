@@ -52,4 +52,9 @@ public class ProfessionalSpellBook : ISpellBook
     {
         throw new NotImplementedException();
     }
+
+    public int CastSpell(string name, object rnd)
+    {
+        throw new NotImplementedException();
+    }
 }
